@@ -51,7 +51,7 @@ class RegistrationPage:
         browser.element('#react-select-4-input').type(value).press_enter()
 
     def submit(self):
-        browser.element('#submit').click()
+        browser.element('#submit').double_click()
 
     def should_registered_user_with(self, full_name, email, gender,
                                     phone_number, birthday, subjects, hobbies,
