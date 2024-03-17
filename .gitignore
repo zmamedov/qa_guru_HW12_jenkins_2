@@ -159,4 +159,4 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
-allure-pytest==2.13.2
+tests/allure-results
