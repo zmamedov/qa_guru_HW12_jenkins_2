@@ -1,9 +1,15 @@
-import pytest
+import pytest, os
+from dotenv import load_dotenv
 from selene import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 from utils import attach
+
+
+@pytest.fixture(scope="session", autouse=True)
+def load_env():
+    load_dotenv()
 
 
 @pytest.fixture(scope='function', autouse=True)
@@ -18,8 +24,11 @@ def browser_management():
     }
     options.capabilities.update(selenoid_capabilities)
 
+    login = os.getenv("SELENOID_LOGIN")
+    password = os.getenv("SELENOID_PASS")
+    selenoid_url = os.getenv("SELENOID_URL")
     driver = webdriver.Remote(
-        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
+        command_executor=f"https://{login}:{password}@{selenoid_url}/wd/hub",
         options=options)
 
     browser.config.driver = driver
@@ -33,5 +42,4 @@ def browser_management():
     attach.add_html(browser)
     attach.add_logs(browser)
     attach.add_video(browser)
-
     browser.quit()
