@@ -13,7 +13,7 @@ from qa_guru_HW12_jenkins_2.pages.registration_page import RegistrationPage
 @allure.label("owner", "zmamedov")
 @allure.feature("Registration of new user")
 @allure.story("Successful registration")
-@allure.link("https://demoqa.com/automation-practice-form", name="Testing")
+@allure.link("https://demoqa.com/automation-practice-form", name="DemoQA Form")
 def test_register_new_user():
     registration_page = RegistrationPage()
 
